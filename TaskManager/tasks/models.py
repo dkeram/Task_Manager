@@ -13,7 +13,7 @@ class Users(AbstractUser):
         ('User','User'),
         ('Power User', 'Power User'),
     )
-    classes = models.CharField(max_length=10, choices=CLASSES, default='User')
+    user_class = models.CharField(max_length=10, choices=CLASSES, default='User')
     
     def __str__(self):
         return self.username
