@@ -1,14 +1,23 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useMemo } from 'react';
 
 const UrlContext = createContext();
 
-export const UrlProvider = ({ children }) => {
-    const url = 'http://127.0.0.1:8000';
-
-    return(url);
+const UrlProvider = ({ children }) => {
+    
+    const contextValue = useMemo(
+        ()=> {
+            const url = 'http://127.0.0.1:8000/';
+            return(url);
+        },[]
+    );
+    
+    return(
+        <UrlContext.Provider value={contextValue}>{children}</UrlContext.Provider>
+    );
 };
 
 export const useUrl = () => {
-    const context = useContext(UrlContext);
-    return context;
+    return useContext(UrlContext);
 };
+
+export default UrlProvider;

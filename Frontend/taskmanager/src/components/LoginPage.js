@@ -8,7 +8,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const {setToken} = useAuth();
-    const {url} = useUrl();
+    const url = useUrl();
 
     const submit = async e => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const Login = () => {
             password : password,
         };
 
-        const {data} = await axios.post(`${url}/token/`, user, {headers: {'Content-Type':'application/json'}},{withCredentials: true});
+        const {data} = await axios.post(`${url}token/`, user, {headers: {'Content-Type':'application/json'}},{withCredentials: true});
         localStorage.clear();
         setToken(data.access)
         localStorage.setItem('refresh_token', data.refresh);
@@ -51,8 +51,7 @@ const Login = () => {
                   onChange={e => setPassword(e.target.value)}/>
               </div>
               <div className="d-grid gap-2 mt-3">
-                <button type="submit" 
-                   className="btn btn-primary">Submit</button>
+                <button type="submit" variant="contained">Submit</button>
               </div>
             </div>
          </form>

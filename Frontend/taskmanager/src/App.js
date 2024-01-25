@@ -5,9 +5,9 @@ import LogoutPage from './components/LogoutPage';
 
 function App() {
   return (
-    <header className="App-header">
+    <header>
       <Routes>
-        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/" element={<LoginPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>
       </Routes>
     </header>
