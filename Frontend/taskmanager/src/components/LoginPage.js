@@ -18,7 +18,7 @@ const Login = () => {
             password : password,
         };
 
-        const {data} = await axios.post(`${url}token/`, user, {headers: {'Content-Type':'application/json'}},{withCredentials: true});
+        const {data} = await axios.post(`${url}/token/`, user, {headers: {'Content-Type':'application/json'}},{withCredentials: true});
         localStorage.clear();
         setToken(data.access)
         localStorage.setItem('refresh_token', data.refresh);
