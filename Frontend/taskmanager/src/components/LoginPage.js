@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {useAuth} from '../providers/AuthContext';
 import {useUrl} from '../providers/UrlContext';
+import Button from '@mui/material/Button';
 
 
 const Login = () => {
@@ -51,7 +52,7 @@ const Login = () => {
                   onChange={e => setPassword(e.target.value)}/>
               </div>
               <div className="d-grid gap-2 mt-3">
-                <button type="submit" variant="contained">Submit</button>
+              <Button type="submit" variant="contained">Login</Button>
               </div>
             </div>
          </form>

@@ -15,7 +15,7 @@ class UsersListCreateView(generics.ListCreateAPIView):
     
 
 class ProjectsListCreateView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Projects.objects.all()
     serializer_class = ProjectsSerializer
 
