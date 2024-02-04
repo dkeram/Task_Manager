@@ -32,6 +32,7 @@ const ProjectPostForm = (props) => {
             setDescription('');
             setDueDate('');
 
+            window.location.href = '/projects';
         }catch(error){
             console.error('Error Creating the Project', error);
         };
@@ -66,7 +67,7 @@ const ProjectPostForm = (props) => {
                 <DatePicker 
                  selected={dueDate}
                  onChange={setDueDate}
-                dateFormat="MM/dd/yyyy"
+                dateFormat="dd/MM/yyyy"
                 />
             </div>
             <Button type="submit" variant="contained">Create Project</Button>

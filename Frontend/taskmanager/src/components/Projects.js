@@ -3,6 +3,10 @@ import axios from 'axios';
 import { useAuth } from '../providers/AuthContext';
 import { useUrl } from '../providers/UrlContext';
 import { DataGrid } from '@mui/x-data-grid';
+import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 
 const Projects = (props) => {
@@ -41,19 +45,25 @@ const Projects = (props) => {
       
 
     return(
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={projects}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-        checkboxSelection
-      />
-    </div>
+      <>
+      <Box sx={{ width: '100%'}}>
+      <Link to="/new_project"><Button variant="outlined" >Create A New Project</Button></Link>
+      <Typography variant="h1" gutterBottom>Active Projects</Typography>
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={projects}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+          checkboxSelection
+        />
+      </div>
+      </Box>
+      </>
     );
 };
 

@@ -3,7 +3,9 @@ import axios from 'axios';
 import {useAuth} from '../providers/AuthContext';
 import {useUrl} from '../providers/UrlContext';
 import Button from '@mui/material/Button';
-
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -28,35 +30,30 @@ const Login = () => {
         window.location.href = '/projects/'
     }
     return(
-        <div className="container mt-5">
-          <form onSubmit={submit}>
-            <div className="mt-3">
-              <h2 className="Auth-form-title">Sign In</h2>
-              <div className="mt-3">
-                <label>Username:</label>
-                <input className="form-control mt-1" 
-                  placeholder="Enter Username" 
-                  name='username'  
-                  type='text' value={username}
-                  required 
-                  onChange={e => setUsername(e.target.value)}/>
-              </div>
-              <div className="form-group mt-3">
-                <label>Password:</label>
-                <input name='password' 
-                  type="password"     
-                  className="form-control mt-1"
-                  placeholder="Enter password"
-                  value={password}
-                  required
-                  onChange={e => setPassword(e.target.value)}/>
-              </div>
-              <div className="d-grid gap-2 mt-3">
-              <Button type="submit" variant="contained">Login</Button>
-              </div>
-            </div>
-         </form>
-       </div>
+      <form onSubmit={submit} align="center">
+        <Typography variant="h1">Sign In</Typography>
+        <br/>
+        <Box sx={{ width: '100%'}}>
+                <TextField
+                    required
+                    id="outlined-required"
+                    label="Username"
+                    value={username} onChange={(e) => setUsername(e.target.value)} 
+                />
+        </Box>
+        <br/>
+        <Box sx={{ width: '100%'}}>
+                <TextField
+                    required
+                    id="outlined-required"
+                    label="Password"
+                    type="password"
+                    value={password} onChange={(e) => setPassword(e.target.value)} 
+                />
+        </Box>
+        <br/>
+        <Button type="submit" variant="contained">Login</Button>
+      </form>
     );
 };
 
