@@ -1,4 +1,5 @@
 import React from 'react';
+import {useAuth} from '../providers/AuthContext';
 import { Typography, Drawer, Box } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -7,10 +8,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 
 const Layout = ({ children })=>{
+    const {token, userClass,id } = useAuth();
     const drawerWidth = 300;
     const menuItems = [
         {
-            text : 'My Projects',
+            text : 'Projects',
             icon : '+',
             path : '/projects'
         },
@@ -22,7 +24,7 @@ const Layout = ({ children })=>{
         {
             text : 'My Tasks',
             icon : '+',
-            path : '/tasks'
+            path : `/tasks/${id}`
         },
         {
             text : 'Assign a Task',
@@ -30,9 +32,14 @@ const Layout = ({ children })=>{
             path : '/tasks'
         },
         {
+            text : 'Create New User',
+            icon : '+',
+            path : '/user_registration'
+        },
+        {
             text : 'My Messages',
             icon : '+',
-            path : '/messages'
+            path : `/messages/${id}`
         },
         {
             text : 'Logout',
@@ -58,7 +65,6 @@ const Layout = ({ children })=>{
                         Task Manager
                     </Typography>
                 </Box>
-                  
                 <List>
                     {menuItems.map(item =>(
                         <ListItemButton to={item.path}>

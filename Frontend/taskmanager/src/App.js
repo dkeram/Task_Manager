@@ -5,6 +5,7 @@ import LogoutPage from './components/LogoutPage';
 import Projects from './components/Projects';
 import ProjectPostForm from './components/PostProjectForm';
 import Layout from './components/Layout';
+import UserRegistration from './components/UserRegistration';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/logout" element={<LogoutPage/>}/>
           <Route path="/projects" element={<Projects/>}/>
           <Route path="/new_project" element={<ProjectPostForm/>}/>
+          <Route path="/user_registration" element={<UserRegistration/>}/>
         </Routes>
       </Layout>
     </header>
