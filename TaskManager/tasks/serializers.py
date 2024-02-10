@@ -26,7 +26,13 @@ class TasksSerializer(serializers.ModelSerializer):
         model = Tasks
         fields = ['id', 'title', 'description', 'date_created', 'due_date', 'project', 'user', 'task_status']
         
-        
+class MyTasks(serializers.ModelSerializer):
+    user = UsersSerializer(read_only=True)
+    
+    class Meta:
+        model = Tasks
+        fields = ['id', 'title', 'description', 'date_created', 'due_date', 'project', 'user', 'task_status']
+
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Messages

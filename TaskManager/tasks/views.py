@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Users, Projects, TaskStatus, Tasks, Messages
-from .serializers import UsersSerializer, ProjectsSerializer, TaskStatusSerializer, TasksSerializer, MessageSerializer
+from .serializers import UsersSerializer, ProjectsSerializer, TaskStatusSerializer, TasksSerializer, MessageSerializer, MyTasks
 
 # Create your views here.
 
@@ -36,6 +36,15 @@ class  TaskStatusListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = TaskStatus.objects.all()
     serializer_class = TaskStatusSerializer
+
+class MyTasks(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MyTasks
+    
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        user = Users.objects.get(pk=user_id)
+        return Tasks.objects.filter(user=user)
 
 
 class MessagesListCreateView(generics.ListCreateAPIView):
