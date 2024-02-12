@@ -47,8 +47,7 @@ const Projects = (props) => {
     return(
       <>
       <Box sx={{ width: '100%'}}>
-      <Link to="/new_project"><Button variant="outlined" >Create A New Project</Button></Link>
-      <Typography variant="h1" gutterBottom>Active Projects</Typography>
+      <Typography variant='h1' gutterBottom>Active Projects</Typography>
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid
           rows={projects}

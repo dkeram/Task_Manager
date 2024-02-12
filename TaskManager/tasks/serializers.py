@@ -22,6 +22,9 @@ class TaskStatusSerializer(serializers.ModelSerializer):
 
 
 class TasksSerializer(serializers.ModelSerializer):
+    user = UsersSerializer(read_only=True)
+    project = ProjectsSerializer(read_only=True)
+    
     class Meta:
         model = Tasks
         fields = ['id', 'title', 'description', 'date_created', 'due_date', 'project', 'user', 'task_status']
