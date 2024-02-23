@@ -60,3 +60,6 @@ const MyTasks=()=>{
         </Box>
     );
 };
+
+
+export default MyTasks;

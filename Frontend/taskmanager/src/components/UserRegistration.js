@@ -6,11 +6,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Select from "@mui/joy/Select";
-import Option from "@mui/joy/Option";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import Avatar from "@mui/joy/Avatar";
-import ListDivider from "@mui/joy/ListDivider";
+import Select from "@mui/material/Select";
+import MenuItem from '@mui/material/MenuItem';
 
 const UserRegistration = ()=>{
     const [username, setUsername] = useState('');
@@ -20,12 +17,16 @@ const UserRegistration = ()=>{
     const [lastname, setLastname] = useState('');
     const [userclass, setUserclass] = useState('');
     const {token} = useAuth();
-    const {url} = useUrl();
+    const url = useUrl();
 
-
+    const handleChange = (event) => {
+        setUserclass(event.target.value);
+    };
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+
+        
 
         try{
             await axios.post(`${url}/users/`, {
@@ -50,9 +51,10 @@ const UserRegistration = ()=>{
         };
     };
 
+
     return(
         <form onSubmit={handleSubmit} align="center">
-        <Typography variant="h1">Sign In</Typography>
+        <Typography variant="h1">Create New User</Typography>
         <br/>
         <Box sx={{ width: '100%'}}>
                 <TextField
@@ -102,24 +104,13 @@ const UserRegistration = ()=>{
         </Box>
         <br/>
         <Box sx={{ width: '100%'}}>
-            <Select defaultValue="User">
-                <Option value="User">
-                    <ListItemDecorator>
-                    <Avatar size="sm" />
-                    </ListItemDecorator>
-                    User
-                </Option>
-            <ListDivider role="none" inset="startContent" />
-                <Option value="Power User">
-                    <ListItemDecorator>
-                    <Avatar size="sm" />
-                    </ListItemDecorator>
-                    Power User
-                </Option>
+            <Select defaultValue="User" onChange={handleChange}>
+                <MenuItem value={"User"}>User</MenuItem>
+                <MenuItem value={"Power User"}>Power User</MenuItem>
             </Select>
         </Box>
         <br/>
-        <Button type="submit" variant="contained">Login</Button>
+        <Button type="submit" variant="contained">Create user</Button>
       </form>
     );
 
