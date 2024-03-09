@@ -35,6 +35,9 @@ const MyTasks=()=>{
 
     return(
         <Box sx={{width: '100%'}}>
+          {myTasks.length === 0 ? <h2>You have any task yet!</h2> :
+          <>
+            <h2>My Tasks</h2>
             {myTasks.map((task)=>
                 <Grid item xs={12} md={6}>
                   <List key={task.id}>
@@ -57,6 +60,7 @@ const MyTasks=()=>{
                   </List>
               </Grid>
             )}
+            </> }
         </Box>
     );
 };

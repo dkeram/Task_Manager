@@ -24,12 +24,12 @@ const Layout = ({ children })=>{
         {
             text : 'My Tasks',
             icon : '+',
-            path : `/tasks/${id}`
+            path : `/mytasks`
         },
         {
             text : 'Assign a Task',
             icon : '+',
-            path : '/tasks'
+            path : '/new_task'
         },
         {
             text : 'Create New User',

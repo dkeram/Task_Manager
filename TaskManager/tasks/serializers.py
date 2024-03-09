@@ -40,3 +40,11 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Messages
         fields = ['id', 'sender', 'receiver', 'subject', 'content', 'date_created']
+        
+class NewTaskSerializer(serializers.ModelSerializer):
+    user = UsersSerializer(read_only=True)
+    project = ProjectsSerializer(read_only=True)
+    
+    class Meta:
+        model = Tasks
+        fields = ['id', 'title', 'description', 'date_created', 'due_date', 'project', 'user', 'task_status']

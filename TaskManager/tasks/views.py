@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Users, Projects, TaskStatus, Tasks, Messages
-from .serializers import UsersSerializer, ProjectsSerializer, TaskStatusSerializer, TasksSerializer, MessageSerializer, MyTasks
+from .serializers import UsersSerializer, ProjectsSerializer, TaskStatusSerializer, TasksSerializer, MessageSerializer, MyTasks, NewTaskSerializer
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ class UsersListCreateView(generics.ListCreateAPIView):
     
 
 class ProjectsListCreateView(generics.ListCreateAPIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     queryset = Projects.objects.all()
     serializer_class = ProjectsSerializer
 
@@ -29,7 +29,7 @@ class ProjectsRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 class  TasksListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Tasks.objects.all()
-    serializer_class = TasksSerializer
+    serializer_class = NewTaskSerializer
 
 
 class  TaskStatusListCreateView(generics.ListCreateAPIView):
@@ -52,9 +52,8 @@ class MessagesListCreateView(generics.ListCreateAPIView):
     queryset = Messages.objects.all()
     serializer_class = MessageSerializer
     
-    
+        
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def post(self, request):
 

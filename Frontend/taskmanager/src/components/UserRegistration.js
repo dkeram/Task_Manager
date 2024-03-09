@@ -104,7 +104,7 @@ const UserRegistration = ()=>{
         </Box>
         <br/>
         <Box sx={{ width: '100%'}}>
-            <Select defaultValue="User" onChange={handleChange}>
+            <Select defaultValue="User" label="User Class" onChange={handleChange}>
                 <MenuItem value={"User"}>User</MenuItem>
                 <MenuItem value={"Power User"}>Power User</MenuItem>
             </Select>
